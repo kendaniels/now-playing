@@ -1,4 +1,4 @@
-# MusicSeer
+# Now Playing
 
 Forked from the Raycast **Genius Lyrics** extension: [raycast/extensions/tree/main/extensions/genius-lyrics](https://github.com/raycast/extensions/tree/main/extensions/genius-lyrics).
 
@@ -18,11 +18,11 @@ Generate an AI interpretation for the lyrics you are viewing, grounded in the so
 
 Create, edit, and select interpretation prompts to control how AI analysis is generated for each song.
 
-MusicSeer also supports manual song-title search, search by remembered lyric lines, and opening source pages on Genius.com.
+Now Playing also supports manual song-title search, search by remembered lyric lines, and opening source pages on Genius.com.
 
 ## Install `media-control` (macOS)
 
-MusicSeer uses `media-control` to detect the currently playing (or recently paused) track.
+Now Playing uses `media-control` to detect the currently playing (or recently paused) track.
 
 Recommended (Homebrew):
 
