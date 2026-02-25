@@ -1,4 +1,4 @@
-import { Cache, LaunchType, MenuBarExtra, getPreferenceValues, launchCommand } from "@raycast/api";
+import { Cache, MenuBarExtra, getPreferenceValues, open } from "@raycast/api";
 import { useEffect, useRef, useState } from "react";
 import { inspectNowPlayingForLookup } from "./media-control";
 
@@ -84,6 +84,10 @@ function normalizeTemplate(template?: string): string {
 }
 
 function menuTitle(state: NowPlayingState, template: string): string {
+  if (state.status === "missing-media-control") {
+    return "Install media-control";
+  }
+
   if (state.status !== "ok" || !state.track) {
     return "♫";
   }
@@ -311,28 +315,26 @@ export default function Command() {
       isLoading={!hasInitialized}
       title={menuTitle(state, titleTemplate)}
       icon={showArtworkInMenuBar ? state.artworkUrl || undefined : undefined}
-      tooltip="MusicSeer Now Playing"
+      tooltip="Now Playing"
     >
-      <MenuBarExtra.Section title="Open Command">
-        <MenuBarExtra.Item
-          title={state.track ? `Get Lyrics for ${state.track}` : "Get Lyrics for Current Track"}
-          onAction={async () => {
-            await launchCommand({ name: "index", type: LaunchType.UserInitiated });
-          }}
-        />
-        <MenuBarExtra.Item
-          title={state.artist ? `Get Info for ${state.artist}` : "Get Info for Current Artist"}
-          onAction={async () => {
-            await launchCommand({ name: "current-artist-bio", type: LaunchType.UserInitiated });
-          }}
-        />
-        <MenuBarExtra.Item
-          title={state.album ? `Get Info for ${state.album}` : "Get Info for Current Album"}
-          onAction={async () => {
-            await launchCommand({ name: "current-album-bio", type: LaunchType.UserInitiated });
-          }}
-        />
-      </MenuBarExtra.Section>
+      {state.status === "missing-media-control" ? (
+        <MenuBarExtra.Section title="Install media-control">
+          <MenuBarExtra.Item title="1) brew install media-control" />
+          <MenuBarExtra.Item title="2) media-control get" />
+          <MenuBarExtra.Item
+            title="Open Homebrew Formula"
+            onAction={async () => {
+              await open("https://formulae.brew.sh/formula/media-control");
+            }}
+          />
+          <MenuBarExtra.Item
+            title="Open media-control Repository"
+            onAction={async () => {
+              await open("https://github.com/ungive/media-control");
+            }}
+          />
+        </MenuBarExtra.Section>
+      ) : null}
     </MenuBarExtra>
   );
 }

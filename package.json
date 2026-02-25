@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "now-playing",
   "title": "Now Playing",
-  "description": "Search by song title to instantly view lyrics, or enter remembered lyrics to quickly find the song's title, utilizing the Genius Lyrics API.",
+  "description": "Show the currently playing track and artist in the Raycast menu bar.",
   "icon": "command-icon-v2.png",
   "author": "tkdkid1000",
   "contributors": [
@@ -16,82 +16,6 @@
   ],
   "license": "MIT",
   "commands": [
-    {
-      "name": "index",
-      "title": "♫ Get Lyrics for Current Playing Track",
-      "description": "Search lyrics with the Genius API.",
-      "mode": "view"
-    },
-    {
-      "name": "manual-search",
-      "title": "Manual Track Search",
-      "description": "Manually search songs by title and artist with the Genius API.",
-      "mode": "view",
-      "arguments": [
-        {
-          "name": "query",
-          "placeholder": "Query",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "name": "lyric-search",
-      "title": "Search by Lyric",
-      "description": "Search for song titles using remembered lyrics with the Genius API.",
-      "mode": "view",
-      "arguments": [
-        {
-          "name": "query",
-          "placeholder": "Query",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "name": "manage-prompts",
-      "title": "Manage Interpretation Prompts",
-      "description": "Add, edit, delete, and reset lyric interpretation prompts.",
-      "mode": "view"
-    },
-    {
-      "name": "current-artist-bio",
-      "title": "♫ Get Info for Current Artist",
-      "description": "Auto-detect the currently playing song and open the matching artist info from Genius.",
-      "mode": "view"
-    },
-    {
-      "name": "manual-artist-bio-search",
-      "title": "Manual Artist Info Search",
-      "description": "Search for artist info by song title or artist name.",
-      "mode": "view",
-      "arguments": [
-        {
-          "name": "query",
-          "placeholder": "Artist or song",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "name": "current-album-bio",
-      "title": "♫ Get Info for Current Album",
-      "description": "Auto-detect the currently playing song and open the matching album info from Genius.",
-      "mode": "view"
-    },
-    {
-      "name": "manual-album-bio-search",
-      "title": "Manual Album Info Search",
-      "description": "Search for album info by song title, artist, or album name.",
-      "mode": "view",
-      "arguments": [
-        {
-          "name": "query",
-          "placeholder": "Album, artist, or song",
-          "type": "text"
-        }
-      ]
-    },
     {
       "name": "now-playing-menubar",
       "title": "Now Playing Menu Bar Item",
@@ -120,9 +44,7 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.103.0",
-    "@raycast/utils": "^2.2.1",
-    "cheerio": "^1.0.0"
+    "@raycast/api": "^1.103.0"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.0.4",
